@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Salessa Shop - Home</title>
+ <?php echo $this->runChild('layouts.partials.css'); ?>
+</head>
+
+<body>
+ <!--================ Start Header Menu Area =================-->
+ <header class="header_area">
+ <?php echo $this->runChild('layouts.partials.nav'); ?>
+ </header>
+ <!--================ End Header Menu Area =================-->
+
+ <main class="site-main">
+
+ <?php echo $this->runChild('layouts.partials.banner'); ?>
+
+
+ <?php echo $this->yieldContent('content'); ?>
+
+
+
+ </main>
+
+
+ <?php echo $this->runChild('layouts.partials.footer'); ?>
+
+
+ <?php echo $this->runChild('layouts.partials.js'); ?>
+
+</body>
+
+</html>

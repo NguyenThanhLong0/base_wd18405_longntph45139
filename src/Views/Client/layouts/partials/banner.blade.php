@@ -1,0 +1,20 @@
+        <!--================ Hero banner start =================-->
+        <section class="hero-banner">
+            <div class="container">
+                <div class="row no-gutters align-items-center pt-60px">
+                    <div class="col-5 d-none d-sm-block">
+                        <div class="hero-banner__img">
+                            <img class="img-fluid" src="{{asset('assets/client/img/home/hero-banner.png')}}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-sm-7 col-lg-6 offset-lg-1 pl-4 pl-md-5 pl-lg-0">
+                        <div class="hero-banner__content">
+                            <h4>Cửa hàng thú vị</h4>
+                            <h1>Khám phá sản phẩm chất lượng của chúng tôi</h1>
+                            <p>Chúng tôi cung cấp những sản phẩm rau sạch, nguồn gốc tự nhiên, mang lại sức khỏe cho bạn và gia đình.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================ Hero banner start =================-->

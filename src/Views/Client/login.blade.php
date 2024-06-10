@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Salessa Shop - Login</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
+    @include('layouts.partials.css')
+</head>
+
+<body>
+    <!--================ Start Header Menu Area =================-->
+    <header class="header_area">
+        @include('layouts.partials.nav')
+    </header>
+    <!--================ End Header Menu Area =================-->
+
+
+    <!--================Login Box Area =================-->
+    <section class="login_box_area section-margin">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="login_box_img">
+                        <div class="hover">
+                            <h4>New to our website?</h4>
+                            <p>There are advances being made in science and technology everyday, and a good example of this is the</p>
+                            <a class="button button-account" href="register.html">Create an Account</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="login_form_inner">
+                        <h3>Log in to enter</h3>
+                        @if (!empty($_SESSION['error']))
+                        <div class="alert alert-warning">
+                            {{ $_SESSION['error'] }}
+                        </div>
+
+                        @php
+                        unset($_SESSION['error']);
+                        @endphp
+                        @endif
+
+                        <form class="row login_form" action="{{ url('auth/handle-login') }}" method="POST">
+                            <div class="col-md-12 form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <label for="pwd">Password:</label>
+                                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+                            </div>
+
+                            <div class="col-md-12 form-group">
+                                <button class="button button-login w-100" type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+
+                        </form>S
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Login Box Area =================-->
+
+
+
+    @include('layouts.partials.footer')
+
+    @include('layouts.partials.js')
+</body>
+
+</html>
