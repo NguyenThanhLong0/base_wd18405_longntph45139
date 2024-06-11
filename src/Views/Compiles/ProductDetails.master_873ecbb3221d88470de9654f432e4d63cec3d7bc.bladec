@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Salessa Shop - Product Details</title>
+ <?php if('ProductDetails.css') echo 'required'; ?>
+</head>
+<body>
+	<!--================ Start Header Menu Area =================-->
+	<header class="header_area">
+ <div class="main_menu">
+ <?php if('ProductDetails.nav') echo 'required'; ?>
+ </div>
+ </header>
+	<!--================ End Header Menu Area =================-->
+	
+	<!-- ================ start banner area ================= -->	
+	<?php if('ProductDetails.banne') echo 'required'; ?>
+	<!-- ================ end banner area ================= -->
+
+
+ <?php echo $this->yieldContent('content'); ?>
+ 
+
+ <!--================ Start footer Area  =================-->	
+ <?php if('ProductDetails.footer') echo 'required'; ?>
+	<!--================ End footer Area  =================-->
+
+
+
+<?php if('ProductDetails.js') echo 'required'; ?>
+</body>
+</html>

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-Homepage
+Chi Tiết sản phẩm
 @endsection
 
 @section('content')
@@ -12,36 +12,43 @@ Homepage
             <div class="col-lg-6">
                 <div class="owl-carousel owl-theme s_Product_carousel">
                     <div class="single-prd-item">
-                        <img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+                        <img class="img-fluid" src="{{ asset($product['img_thumbnail']) }}" alt="">
                     </div>
-                    <!-- <div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
-						</div>
-						<div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
-						</div> -->
                 </div>
             </div>
             <div class="col-lg-5 offset-lg-1">
                 <div class="s_product_text">
-                    <h3>{{ $product->name }}</h3>
-                    <h2>${{ $product->price }}</h2>
+                    <h3>{{ $product['name'] }}</h3>
+                    <h2>{{ $product['price'] }}đ</h2>
                     <ul class="list">
-                        <li><a class="active" href="#"><span>Category</span> : {{ $category->name }}</a></li>
+                        <li><a class="active" href="#"><span>Category</span> :{{ $category['name'] }}</a></li>
                         <!-- <li><a href="#"><span>Availibility</span> : In Stock</a></li> -->
                     </ul>
-                    <p>{{ $product->content }}</p>
+                    <p>{{ $product['content'] }}</p>
                     <div class="product_count">
                         <label for="qty">Quantity:</label>
-                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="ti-angle-left"></i></button>
-                        <input type="text" name="qty" id="sst" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                        <!-- <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="ti-angle-right"></i></button> -->
-                        <a class="button primary-btn" href="#">Add to Cart</a>
+                        <button onclick="decreaseQuantity()" class="increase items-count" type="button"><i class="ti-angle-left"></i></button>
+                        <input type="text" name="qty" id="qty" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                        <button onclick="increaseQuantity()" class="reduced items-count" type="button"><i class="ti-angle-right"></i></button>
+                        <a class="button primary-btn text-decoration-none" href="#">Add to Cart</a>
                     </div>
-                    <div class="card_area d-flex align-items-center">
-                        <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-                        <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
-                    </div>
+
+                    <script>
+                        function increaseQuantity() {
+                            var qtyInput = document.getElementById('qty');
+                            var qty = parseInt(qtyInput.value);
+                            qtyInput.value = qty + 1;
+                        }
+
+                        function decreaseQuantity() {
+                            var qtyInput = document.getElementById('qty');
+                            var qty = parseInt(qtyInput.value);
+                            if (qty > 1) {
+                                qtyInput.value = qty - 1;
+                            }
+                        }
+                    </script>
+
                 </div>
             </div>
         </div>
@@ -363,113 +370,24 @@ Homepage
     <div class="container">
         <div class="section-intro pb-60px">
             <p>Popular Item in the market</p>
-            <h2>Top <span class="section-intro__style">Product</span></h2>
+            <h2>Similar <span class="section-intro__style">Product</span></h2>
         </div>
         <div class="row mt-30">
-            <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
+            @foreach($products as $product)
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
                 <div class="single-search-product-wrapper">
                     <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-1.png" alt=""></a>
+                        <a href="#"><img src="{{ asset($product['img_thumbnail']) }}" alt="{{ $product['name'] }}"></a>
                         <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-2.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-3.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
+                            <a href="#" class="title">{{ $product['name'] }}</a>
+                            <div class="price">${{ $product['price'] }}</div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                <div class="single-search-product-wrapper">
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-4.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-5.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-6.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                <div class="single-search-product-wrapper">
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-7.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-8.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-9.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-                <div class="single-search-product-wrapper">
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-1.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-2.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                    <div class="single-search-product d-flex">
-                        <a href="#"><img src="img/product/product-sm-3.png" alt=""></a>
-                        <div class="desc">
-                            <a href="#" class="title">Gray Coffee Cup</a>
-                            <div class="price">$170.00</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
+
     </div>
 </section>
 <!--================ end related Product area =================-->

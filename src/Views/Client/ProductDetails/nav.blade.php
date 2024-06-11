@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-        <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
+        <a class="navbar-brand logo_h" href="{{url('')}}"><img src="img/logo.png" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -20,10 +20,12 @@
                     </ul>
                 </li>
                 <li class="nav-item submenu dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Danh mục</a>
                     <ul class="dropdown-menu">
-                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                        <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
+                        @foreach ($categories as $categori)
+                        <li class="nav-item"><a class="nav-link" href="{{ $categories['name'] }}">{{ $categories['name'] }}</a></li>
+                        @endforeach
+                        
                     </ul>
                 </li>
                 <li class="nav-item submenu dropdown">

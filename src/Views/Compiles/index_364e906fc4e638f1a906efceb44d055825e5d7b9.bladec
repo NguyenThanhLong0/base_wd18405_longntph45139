@@ -44,33 +44,12 @@ Homepage
 
  <div class="row">
 
- <!-- <div class="col-md-6 col-lg-4 col-xl-3">
- <div class="card text-center card-product">
- <div class="card-product__img">
- <img class="card-img" src="<?php echo \htmlentities(asset('assets/client/img/product/product1.png')??'', ENT_QUOTES, 'UTF-8', false); ?>" alt="">
- <ul class="card-product__imgOverlay">
- <li><button><i class="ti-search"></i></button></li>
- <li><button><i class="ti-shopping-cart"></i></button></li>
- <li><button><i class="ti-heart"></i></button></li>
- </ul>
- </div>
- <div class="card-body">
- <p>Accessories</p>
- <h4 class="card-product__title"><a href="single-product.html">Quartz Belt Watch</a></h4>
- <p class="card-product__price">$150.00</p>
- </div>
- </div>
- </div> -->
-
  <?php $__currentLoopData = $products; $this->addLoop($__currentLoopData);$this->getFirstLoop();
  foreach($__currentLoopData as $product): $loop = $this->incrementLoopIndices();  ?>
  <div class="col-md-6 col-lg-4 col-xl-3">
  <div class="card text-center card-product">
  <div class="card-product__img">
- <a href="<?php echo \htmlentities(url('product/{id}')??'', ENT_QUOTES, 'UTF-8', false); ?>"><img class="card-img" src="<?php echo \htmlentities(asset($product['img_thumbnail'])??'', ENT_QUOTES, 'UTF-8', false); ?>" alt="<?php echo \htmlentities($product['name']??'', ENT_QUOTES, 'UTF-8', false); ?>"></a>
-
- <?php echo \htmlentities(url('auth/login')??'', ENT_QUOTES, 'UTF-8', false); ?>
-
+ <a href="<?php echo \htmlentities(url('product/'.$product['id'])??'', ENT_QUOTES, 'UTF-8', false); ?>"><img class="card-img" src="<?php echo \htmlentities(asset($product['img_thumbnail'])??'', ENT_QUOTES, 'UTF-8', false); ?>" alt="<?php echo \htmlentities($product['name']??'', ENT_QUOTES, 'UTF-8', false); ?>"></a>
 
  <ul class="card-product__imgOverlay">
  <li><button><i class="ti-shopping-cart"></i></button></li>
@@ -209,4 +188,5 @@ Homepage
 
 
 <?php $this->stopSection(); ?>
+
 <?php if (isset($_shouldextend[1])) { echo $this->runChild('layouts.master'); } ?>

@@ -57,4 +57,14 @@ class Category extends Model
             ->setParameter(0, $id)
             ->fetchAssociative();
     }
+
+    public function allWithProductCount()
+    {
+        return $this->queryBuilder
+            ->select('c.id', 'c.name', 'COUNT(p.id) as product_count')
+            ->from($this->tableName, 'c')
+            ->leftJoin('c', 'products', 'p', 'c.id = p.category_id')
+            ->groupBy('c.id')
+            ->fetchAllAssociative();
+    }
 }
